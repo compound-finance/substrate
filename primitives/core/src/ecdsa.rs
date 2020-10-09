@@ -32,7 +32,7 @@ use substrate_bip39::seed_from_entropy;
 #[cfg(feature = "std")]
 use bip39::{Mnemonic, Language, MnemonicType};
 #[cfg(feature = "full_crypto")]
-use crate::{hashing::blake2_256, crypto::{Pair as TraitPair, DeriveJunction, SecretStringError}};
+use crate::{hashing::keccak_256, crypto::{Pair as TraitPair, DeriveJunction, SecretStringError}};
 #[cfg(feature = "std")]
 use crate::crypto::Ss58Codec;
 #[cfg(feature = "std")]
@@ -348,7 +348,7 @@ impl Signature {
 	/// Recover the public key from this signature and a message.
 	#[cfg(feature = "full_crypto")]
 	pub fn recover<M: AsRef<[u8]>>(&self, message: M) -> Option<Public> {
-		let message = secp256k1::Message::parse(&blake2_256(message.as_ref()));
+		let message = secp256k1::Message::parse(&keccak_256(message.as_ref()));
 		let sig: (_, _) = self.try_into().ok()?;
 		secp256k1::recover(&message, &sig.0, &sig.1)
 			.ok()
@@ -478,13 +478,13 @@ impl TraitPair for Pair {
 
 	/// Sign a message.
 	fn sign(&self, message: &[u8]) -> Signature {
-		let message = secp256k1::Message::parse(&blake2_256(message));
+		let message = secp256k1::Message::parse(&keccak_256(message));
 		secp256k1::sign(&message, &self.secret).into()
 	}
 
 	/// Verify a signature on a message. Returns true if the signature is good.
 	fn verify<M: AsRef<[u8]>>(sig: &Self::Signature, message: M, pubkey: &Self::Public) -> bool {
-		let message = secp256k1::Message::parse(&blake2_256(message.as_ref()));
+		let message = secp256k1::Message::parse(&keccak_256(message.as_ref()));
 		let sig: (_, _) = match sig.try_into() { Ok(x) => x, _ => return false };
 		match secp256k1::recover(&message, &sig.0, &sig.1) {
 			Ok(actual) => &pubkey.0[..] == &actual.serialize_compressed()[..],
@@ -497,7 +497,7 @@ impl TraitPair for Pair {
 	/// This doesn't use the type system to ensure that `sig` and `pubkey` are the correct
 	/// size. Use it only if you're coming from byte buffers and need the speed.
 	fn verify_weak<P: AsRef<[u8]>, M: AsRef<[u8]>>(sig: &[u8], message: M, pubkey: P) -> bool {
-		let message = secp256k1::Message::parse(&blake2_256(message.as_ref()));
+		let message = secp256k1::Message::parse(&keccak_256(message.as_ref()));
 		if sig.len() != 65 { return false }
 		let ri = match secp256k1::RecoveryId::parse(sig[64]) { Ok(x) => x, _ => return false };
 		let sig = match secp256k1::Signature::parse_slice(&sig[0..64]) { Ok(x) => x, _ => return false };
