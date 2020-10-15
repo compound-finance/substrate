@@ -26,7 +26,7 @@ use sp_runtime::ConsensusEngineId;
 pub mod inherents;
 
 pub mod sr25519 {
-	mod app_sr25519 {
+	pub mod app_sr25519 {
 		use sp_application_crypto::{app_crypto, key_types::AURA, sr25519};
 		app_crypto!(sr25519, AURA);
 	}
