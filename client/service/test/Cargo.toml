@@ -16,7 +16,7 @@ hex-literal = "0.3.1"
 tempfile = "3.1.0"
 tokio = "0.1.22"
 futures01 = { package = "futures", version = "0.1.29" }
-log = "0.4.8"
+log = "0.4.14"
 fdlimit = "0.2.1"
 parking_lot = "0.11.1"
 sc-light = { version = "2.0.0", path = "../../light" }

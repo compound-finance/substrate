@@ -13,7 +13,7 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-log = "0.4.8"
+log = "0.4.14"
 scoped-tls = "1.0"
 parity-wasm = "0.41.0"
 codec = { package = "parity-scale-codec", version = "1.3.4" }

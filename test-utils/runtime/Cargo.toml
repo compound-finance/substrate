@@ -47,7 +47,7 @@ sp-externalities = { version = "0.8.0", default-features = false, path = "../../
 
 # 3rd party
 cfg-if = "0.1.10"
-log = { version = "0.4.8", optional = true }
+log = { version = "0.4.14", optional = true }
 serde = { version = "1.0.101", optional = true, features = ["derive"] }
 
 [dev-dependencies]

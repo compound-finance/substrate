@@ -31,7 +31,7 @@ sp-inherents = { version = "2.0.0", path = "../../../primitives/inherents" }
 futures = "0.3.4"
 futures-timer = "3.0.1"
 parking_lot = "0.11.1"
-log = "0.4.11"
+log = "0.4.14"
 thiserror = "1.0.21"
 
 [dev-dependencies]

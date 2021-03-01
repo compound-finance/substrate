@@ -22,7 +22,7 @@ sp-application-crypto = { version = "2.0.0", default-features = false, path = ".
 sp-arithmetic = { version = "2.0.0", default-features = false, path = "../arithmetic" }
 sp-std = { version = "2.0.0", default-features = false, path = "../std" }
 sp-io = { version = "2.0.0", default-features = false, path = "../io" }
-log = { version = "0.4.8", optional = true }
+log = { version = "0.4.14", optional = true }
 paste = "0.1.6"
 rand = { version = "0.7.2", optional = true }
 impl-trait-for-tuples = "0.2.0"
