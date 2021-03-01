@@ -51,5 +51,5 @@ fs_extra = "1"
 futures = "0.3.1"
 
 [dev-dependencies]
-criterion = "0.3.0"
+criterion = "0.3.4"
 sc-cli = { version = "0.8.0", path = "../../../client/cli" }
