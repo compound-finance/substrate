@@ -124,6 +124,9 @@ where
 		.add_directive(
 			parse_default_directive("cranelift_codegen=off").expect("provided directive is valid"),
 		)
+		.add_directive(
+			parse_default_directive("regalloc=off").expect("provided directive is valid"),
+		)
 		// Set warn logging by default for some modules.
 		.add_directive(
 			parse_default_directive("cranelift_wasm=warn").expect("provided directive is valid"),
