@@ -13,7 +13,7 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-log = "0.4.11"
+log = "0.4.17"
 atty = "0.2.13"
 regex = "1.4.2"
 tokio = { version = "0.2.21", features = [ "signal", "rt-core", "rt-threaded", "blocking" ] }
