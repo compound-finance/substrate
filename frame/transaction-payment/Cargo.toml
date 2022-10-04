@@ -20,7 +20,7 @@ sp-runtime = { version = "2.0.0", default-features = false, path = "../../primit
 frame-support = { version = "2.0.0", default-features = false, path = "../support" }
 frame-system = { version = "2.0.0", default-features = false, path = "../system" }
 pallet-transaction-payment-rpc-runtime-api = { version = "2.0.0", default-features = false, path = "./rpc/runtime-api" }
-smallvec = "1.4.1"
+smallvec = "1.10.0"
 sp-io = { version = "2.0.0", path = "../../primitives/io", default-features = false }
 sp-core = { version = "2.0.0", path = "../../primitives/core", default-features = false }
 
